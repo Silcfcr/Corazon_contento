@@ -1,0 +1,14 @@
+body {
+  background-image: url(../imgs/background.png);
+}
+
+.body {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+}
+
+.body > div {
+  background-color: white;
+  width: 80%;
+}
