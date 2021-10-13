@@ -65,6 +65,14 @@ class Donation:
         if not results:
             return False
         return results
+
+    @classmethod
+    def get_all_claimed_donations(cls,data):
+        query = "SELECT * FROM donations WHERE status ='solicitada' AND receiver_id = %(id)s;"
+        results = connectToMySQL(cls.db).query_db(query, data)
+        if not results:
+            return False
+        return results
     
     
     @staticmethod

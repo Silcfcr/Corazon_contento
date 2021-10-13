@@ -98,8 +98,9 @@ def dashboard():
     user = User.get_one_user_by_id(data)
     if session['user_type'] == 'receiver':
         donations = Donation.get_all_available_donations()
+        claimed_donations = Donation.get_all_claimed_donations(data)
         print(donations)
-        return render_template("receiver_dashboard.html", receiver=user, donations = donations)
+        return render_template("receiver_dashboard.html", receiver=user, donations = donations, claimed_donations=claimed_donations)
     else: 
         return render_template("donator_dashboard.html", donator = user)
 

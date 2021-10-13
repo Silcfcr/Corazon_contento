@@ -40,7 +40,7 @@
                 <div class='greetings'>
                     <h1>Hello {{receiver["contact_first_name"]}} from {{receiver['name']}}</h1>
                     {% if donations != false: %}
-                    <h2>Aquí listamos las donaciones disponibles</h2>
+                    <h2>Aquí listamos las donaciones disponibles:</h2>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-10">
@@ -72,8 +72,45 @@
                             </table>
                         {% else: %}
                         <h2>Actualmente no hay donaciones disponibles</h2>
-
                         {% endif %}
+
+                        
+                        <div class='greetings'>
+                            {% if claimed_donations != false: %}
+                        <h2>Donaciones reclamadas:</h2>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-10">
+                                <table class="table table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <td>N. de referencia</td>
+                                            <td>Tipo de alimentos</td>
+                                            <td>Cantidad en porciones</td>
+                                            <td>Requires transport</td>
+                                            <td>Detalles</td>
+                                            <td>Acciones</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for donation in claimed_donations %}
+                                        <tr>
+                                            <td>{{donation['id']}}</td>
+                                            <td>{{donation['type']}}</td>
+                                            <td>{{donation['portions']}}</td>
+                                            <td>{{donation['transport']}}</td>
+                                            <td>{{donation['description']}}</td>
+                                            <td>
+                                                {{donation['status']}}
+                                            </td>
+                                        </tr>
+                                        {% endfor%}
+                                    </tbody>
+                                </table>
+                                {% endif %}
+
+
+                    
                     </div>
                 </div>
             </div>

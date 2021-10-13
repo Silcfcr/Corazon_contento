@@ -2,6 +2,25 @@ body {
   background-image: url(../imgs/background.png);
 }
 
+/* .body {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.body > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 90%;
+  border-radius: 0.5em;
+  align-items: center;
+  padding: 2em;
+} */
+
 .body {
   margin-top: 1em;
   display: flex;
@@ -10,17 +29,14 @@ body {
 }
 
 .body > div {
+  padding: 2em;
   background-color: rgba(255, 255, 255, 0.9);
   width: 90%;
   border-radius: 0.5em;
 }
 
 .greetings {
-   display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-
-
-

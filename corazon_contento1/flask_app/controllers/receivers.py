@@ -18,12 +18,5 @@ def list_of_receivers():
 def register_as_receiver():
     return render_template("receiver_registry.html")
 
-@app.route("/receiver_dashboard")
-def receiver_dashboard():
-    data = {
-        'id' : session['user_id']
-    }
-    receiver = User.get_one_user_by_id(data)
-    return render_template("receiver_dashboard.html", receiver=receiver)
 
 
