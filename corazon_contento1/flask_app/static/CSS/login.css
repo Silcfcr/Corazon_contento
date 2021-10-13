@@ -1,0 +1,13 @@
+body {
+  background-image: url(../imgs/background.png);
+}
+
+#login {
+  background-color: white;
+  padding: 2em;
+  margin-top: 2em;
+}
+
+#entrar {
+  margin-top: 1em;
+}

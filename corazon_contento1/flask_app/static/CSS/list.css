@@ -1,0 +1,7 @@
+body {
+  background-image: url(../imgs/background.png);
+}
+
+body > div {
+  background-color: white;
+}

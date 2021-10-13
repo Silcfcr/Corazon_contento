@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corazón Contento</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/CSS/list.css') }}">
+
+</head>
+<body>
+   <!-- Nav_bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/dashboard">Corazón contento</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/list_of_donators">Organizaciones solidarias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/list_of_receivers">Organizaciones beneficiadas</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <a href="/logout" class="btn btn-outline-success me-2" type="submit">Cerrar Sesión</a>
+    
+                </form>
+            </div>
+        </div>
+    </nav>
+    <body>
+        <div class="table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Nombre</td>
+                        <td>Organización</td>
+                        <td>Población</td>
+                        <td>Dirección</td>
+                        <td>Contacto</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for receiver in receivers %}
+                    <tr>
+                        <td>{{receiver['name']}}</td>
+                        <td>{{receiver['type']}}</td>
+                        <td>{{receiver['population']}}</td>
+                        <td>{{receiver['state']}},{{receiver['city']}},{{receiver['address']}}</td>
+                        <td>{{receiver['contact_first_name']}} {{receiver['contact_first_name']}},{{receiver['contact_email']}}
+                        </td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>s 
+    </body>
+   
+    
+</body>
+</html>
