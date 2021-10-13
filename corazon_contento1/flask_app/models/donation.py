@@ -28,6 +28,18 @@ class Donation:
         query  = "UPDATE donations SET status=%(status)s, receiver_id=%(receiver_id)s WHERE id= %(id)s;"
         return connectToMySQL(cls.db).query_db(query,data)
     
+    @classmethod
+    def delete_donation(cls,data):
+        query  = "DELETE FROM donations WHERE id=%(id)s AND status = 'disponible';"
+        print(query)
+        return connectToMySQL(cls.db).query_db(query,data)
+    
+
+    @classmethod
+    def edit_donation(cls,data):
+        query  = "UPDATE donations SET status=%(status)s, receiver_id=%(receiver_id)s WHERE id= %(id)s;"
+        return connectToMySQL(cls.db).query_db(query,data)
+    
 
     @classmethod
     def get_one_donation_by_id(cls,data):
@@ -56,8 +68,6 @@ class Donation:
             return False
         return results
     
-
-    # quede por aquiiiiiii OJOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
     @classmethod
     def get_all_available_donations(cls):
         query = "SELECT * FROM donations WHERE status ='disponible';"
@@ -68,15 +78,34 @@ class Donation:
 
     @classmethod
     def get_all_claimed_donations(cls,data):
-        query = "SELECT * FROM donations WHERE status ='solicitada' AND receiver_id = %(id)s;"
+        query = "SELECT * FROM donations WHERE (status ='solicitada'  AND receiver_id = %(id)s) OR (status ='entregada'  AND receiver_id = %(id)s);"
         results = connectToMySQL(cls.db).query_db(query, data)
         if not results:
             return False
         return results
     
+    @classmethod
+    def get_donator_donations(cls,data):
+        query = "SELECT * FROM donations WHERE donator_id = %(id)s;"
+        results = connectToMySQL(cls.db).query_db(query, data)
+        if not results:
+            return False
+        return results
     
     @staticmethod
     def validate_donation(data):
-        pass
+        is_valid = True
+        #for name 
+        if len(data['description']) < 3:
+            flash("Porfavor provea una descripción detallada de su donación", "donation")
+            is_valid = False
+        if int(data['portions']) < 10:
+            flash("La donación debe ser mayor a 10 porciones", "donation")
+            is_valid = False
+        return is_valid
+
+  
+   
+        
   
    

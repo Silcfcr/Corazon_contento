@@ -1,4 +1,5 @@
 from flask_app.models.user import User
+from flask_app.models.donation import Donation
 from flask_app import app
 from flask import render_template,request, redirect, session, flash
 
@@ -17,6 +18,41 @@ def list_of_receivers():
 @app.route("/register_as_receiver")
 def register_as_receiver():
     return render_template("receiver_registry.html")
+
+@app.route("/show_receiver/<int:id>")
+def show_receiver(id):
+    print("i GOT HERE")
+    data = {
+            "id" : id
+            }
+    receiver = User.get_one_user_by_id(data)
+    print(receiver)
+    return render_template("show_receiver.html", receiver=receiver)
+
+@app.route("/claim_donation/<int:id>")
+def claim_donation(id):
+    data = {
+        'id' : id,
+        'status' : "solicitada",
+        'receiver_id' : session['user_id']
+    }
+    donation = Donation.change_donation_status(data)
+    print(donation)
+    print("Yes!")
+    return redirect('/dashboard')
+
+@app.route("/delivered_donation/<int:id>")
+def delivered_donation(id):
+    data = {
+        'id' : id,
+        'status' : "entregada",
+        'receiver_id' : session['user_id']
+    }
+    donation = Donation.change_donation_status(data)
+    print(donation)
+    print("Yes!")
+    return redirect('/dashboard')
+
 
 
 

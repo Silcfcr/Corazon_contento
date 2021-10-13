@@ -45,12 +45,18 @@ def register_donation():
         'donator_id': request.form['donator_id'],
         'receiver_id' : request.form['receiver_id']
     }
-    id = Donation.register_new_donation(data)
-    return redirect('/dashboard')
+    if Donation.validate_donation(data):
+        id = Donation.register_new_donation(data)
+        return redirect('/dashboard')
+    else:
+        return redirect('/make_donation')
 
 @app.route("/list_of_donations")
 def list_of_available_donations():
-    donations = Donation.get_all_available_donations()
+    data = {
+        "id" : session['user_id']
+    }
+    donations = Donation.get_donator_donations(data)
     return render_template("list_of_donations.html", donations=donations)
 
 @app.route("/see_donation/<int:id>")
@@ -62,16 +68,45 @@ def show_donation(id):
     print(donation)
     return render_template("show_donation.html", donation=donation)
 
-@app.route("/claim_donation/<int:id>")
-def claim_donation(id):
+
+
+@app.route("/delete_donation/<int:id>")
+def delete_donation(id):
     data = {
-        'id' : id,
-        'status' : "solicitada",
-        'receiver_id' : session['user_id']
+        'id' : id
     }
-    donation = Donation.change_donation_status(data)
-    print(donation)
-    print("Yes!")
-    return redirect('/dashboard')
+    deleted = Donation.delete_donation(data)
+    print(deleted)
+    if deleted != None:
+        print(deleted)
+        return redirect("/dashboard")
+    else:
+        print("I wasn't deleted")
+        return redirect("/list_of_donations")
+
+@app.route("/show_edit_donation/<int:id>")
+def show_edit_donation(id):
+    data = {
+        'id' : int(id)
+    }
+    donation = Donation.get_one_donation_by_id(data)
+    return render_template('show_donation.html', donation = donation)
+
+
+@app.route("/edit_donation/<int:id>", methods=['POST'])
+def edit_donation(id):
+    data = {
+        'type' : request.form['type'],
+        'transport' : request.form['transport'],
+        'portions' : request.form['portions'],
+        'expiration': request.form['expiration'],
+        'description' : request.form['description'],
+        'status' : request.form['status'],
+        'donator_id': session['user_id'],
+        'receiver_id' : request.form['receiver_id']
+    }
+    Donation.edit_donation(data)
+    
+    return redirect(f'/show_donation/{id}')
 
 

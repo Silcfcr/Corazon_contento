@@ -7,6 +7,9 @@
     <title>Corazón Contento</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/CSS/list.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 
 </head>
 <body>
@@ -40,32 +43,37 @@
             </div>
         </div>
     </nav>
-    <div class='body'>
-        <div class="table">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <td>Nombre</td>
-                        <td>Organización</td>
-                        <td>Dirección</td>
-                        <td>Contacto</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for donator in donators %}
-                    <tr>
-                        <td>{{donator['name']}}</td>
-                        <td>{{donator['type']}}</td>
-                        <td>{{donator['state']}},{{donator['city']}},{{donator['address']}}</td>
-                        <td>{{donator['contact_first_name']}} {{donator['contact_first_name']}}, {{donator['contact_email']}}
-                        </td>
-                    </tr>
-                    {% endfor%}
-                </tbody>
-            </table>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="table-responsive col-8 justify-content-center">
+                {% if donator != False: %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td>Nombre</td>
+                            <td>Organización</td>
+                            <td>Dirección</td>
+                            <td>Contacto</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for donator in donators %}
+                        <tr>
+                            <td>{{donator['name']}}</td>
+                            <td>{{donator['type']}}</td>
+                            <td>{{donator['state']}},{{donator['city']}},{{donator['address']}}</td>
+                            <td>{{donator['contact_first_name']}} {{donator['contact_first_name']}}, {{donator['contact_email']}}</td>
+                        </tr>
+                        {% endfor%}
+                    </tbody>
+                </table>
+                {% endif %}
+            </div>  
         </div>
     </div>
-   
-    
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 </body>
 </html>

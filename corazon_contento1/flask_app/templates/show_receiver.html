@@ -37,25 +37,16 @@
     <body>
         <div class="body">
             <div>
-                <h2>Donación {{donation['id']}}</h2>
-                <h3>Institución donadora: {{donation['name']}}</h3>
-                <h3>Tipo: {{donation['type']}}</h3>
-                <h3>Porciones: {{donation['portions']}}</h3>
-                <h3>Requiere transporte refrigerado: {{donation['transport']}}</h3>
-                <h3>Detalles: {{donation['description']}}</h3>
-              
 
-                <h3>Ubicación: {{donation['state']}},{{donation['city']}},{{donation['address']}}, </h3>
-                <p></p>
+                <h2>Nombre de la institución: {{receiver['name']}}</h2>
+                <h2> Dirección:{{receiver['state']}},{{receiver['city']}},{{receiver['address']}}</h2>
+                <h1> Información de la persona de contacto: </h2>
+                <h2> Nombre: {{receiver['contact_first_name']}} Nombre: {{receiver['contact_last_name']}} </h2>
+                <h2> Telefono:{{receiver['contact_phone']}} </h2>
+                <h2> Email:{{receiver['contact_email']}} </h2>
             </div>
             <div>
-                <h2>Detalles de la persona de contacto del donador:</h2>
-                <h3>Nombre: {{donation['contact_first_name']}}, {{donation['contact_last_name']}} </h3>
-                <h3>Nombre: {{donation['contact_phone']}}</h3>
-                <h3>Nombre: {{donation['contact_email']}}</h3>
-            </div>
-            <div>
-                <a class="btn btn-outline-success me-2" href="/claim_donation/{{donation['id']}}">Solicitar esta Donación</a>
+                <a class="btn btn-outline-success me-2" href="/dashboard">Ir atrás</a>
             </div>
         </div>
         

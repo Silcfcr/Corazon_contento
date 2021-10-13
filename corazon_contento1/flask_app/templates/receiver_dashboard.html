@@ -38,7 +38,7 @@
         <div class="body">
             <div class="table">
                 <div class='greetings'>
-                    <h1>Hello {{receiver["contact_first_name"]}} from {{receiver['name']}}</h1>
+                    <h1>Hola {{receiver["contact_first_name"]}} de {{receiver['name']}}</h1>
                     {% if donations != false: %}
                     <h2>Aquí listamos las donaciones disponibles:</h2>
                 </div>
@@ -64,7 +64,7 @@
                                             <td>{{donation['transport']}}</td>
                                             <td>{{donation['description']}}</td>
                                             <td>
-                                                <a href="/see_donation/{{donation['id']}}">Ver mas</a>
+                                                <a class="btn btn-outline-success me-2"href="/see_donation/{{donation['id']}}">Ver mas</a>
                                             </td>
                                         </tr>
                                         {% endfor%}
@@ -77,7 +77,7 @@
                         
                         <div class='greetings'>
                             {% if claimed_donations != false: %}
-                        <h2>Donaciones reclamadas:</h2>
+                        <h2>Donaciones reclamadas por su organización:</h2>
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-10">
@@ -90,6 +90,7 @@
                                             <td>Requires transport</td>
                                             <td>Detalles</td>
                                             <td>Acciones</td>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -103,6 +104,9 @@
                                             <td>
                                                 {{donation['status']}}
                                             </td>
+                                            {% if donation['status'] != 'entregada': %}
+                                            <td><a class="btn btn-outline-success me-2"href="/delivered_donation/{{donation['id']}}">Marcar como entregada</a></td>
+                                            {% endif %}
                                         </tr>
                                         {% endfor%}
                                     </tbody>
