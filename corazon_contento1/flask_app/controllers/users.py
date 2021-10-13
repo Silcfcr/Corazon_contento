@@ -9,6 +9,8 @@ bcrypt = Bcrypt(app)
 
 @app.route("/")
 def landing_page():
+    if 'user_id' in session:
+        return redirect("/dashboard")
     return render_template("landing_page.html")
 
 @app.route("/register")

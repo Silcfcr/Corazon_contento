@@ -9,7 +9,15 @@ bcrypt = Bcrypt(app)
 @app.route("/list_of_donators")
 def list_of_donators():
     donators = User.get_all_donators()
-    return render_template("list_of_donators.html", donators=donators)
+    if "user_id" in session:
+        data = {
+            "id" : session['user_id']
+        }
+        user = User.get_one_user_by_id(data)
+        return render_template("list_of_donators.html", donators=donators, user=user)
+    user = False
+    print("Hello", user)
+    return render_template("list_of_donators.html", donators=donators, user=user)
 
 @app.route("/register_as_donator")
 def register_as_donator():
