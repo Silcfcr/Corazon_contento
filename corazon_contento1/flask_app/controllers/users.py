@@ -1,4 +1,5 @@
 from flask_app.models.user import User
+from flask_app.models.donation import Donation
 from flask_app import app
 from flask import render_template, request, redirect, session, flash
 
@@ -94,7 +95,9 @@ def dashboard():
     }
     user = User.get_one_user_by_id(data)
     if session['user_type'] == 'receiver':
-        return render_template("receiver_dashboard.html", receiver=user)
+        donations = Donation.get_all_available_donations()
+        print(donations)
+        return render_template("receiver_dashboard.html", receiver=user, donations = donations)
     else: 
         return render_template("donator_dashboard.html", donator = user)
 

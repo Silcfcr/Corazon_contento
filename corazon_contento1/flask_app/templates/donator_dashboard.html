@@ -26,16 +26,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/list_of_receivers">Organizaciones beneficiadas</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/list_of_donations">Mis donaciones</a>
+                    </li>
                 </ul>
                 <form class="d-flex">
                     <a href="/logout" class="btn btn-outline-success me-2" type="submit">Cerrar Sesión</a>
-    
                 </form>
             </div>
         </div>
     </nav>
     <div class="body">
         <div>
+            
+
             <h1>Hello {{donator["contact_first_name"]}} from {{donator['name']}}</h1>
             <h1>Soy el dashboard del contribuidor</h1>
             <a class="btn btn-outline-success me-2" href="/make_donation">Realizar una donación</a>
