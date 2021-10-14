@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,13 +10,15 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/CSS/donation_registry.css') }}">
 
 </head>
+
 <body>
-   <!-- Nav_bar -->
+    <!-- Nav_bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/dashboard">Corazón contento</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -33,65 +36,66 @@
             </div>
         </div>
     </nav>
+
     <body>
         <div class="body">
-           <div class="form" id='form'>
-               <form action="/register_donation" method="POST">
-                        <div class="container">
-                            <div class="form">
-                                <h1>Regístrese como donante de alimentos</h1>
-                                {% with messages = get_flashed_messages(category_filter=['donation']) %}
-                                {% if messages %}
-                                <div class="alert alert-danger" role="alert">
-                                    <strong>Errores a la hora de realizar la donación. Por favor inténtelo nuevamente</strong>
-                                    {% for message in messages %}
-                                    <p>{{message}}</p>
-                                    {% endfor %}
-                                </div>
-                                {% endif %}
-                                {% endwith %}
-                                <form action="/register_user" method="POST">
-                                    <label for="type">Tipo de donación:</label>
-                                    <select class="form-select" name="type" aria-label="Default select example" multiple>
-                                        <option value="preparada" selected>Comida preparada</option>
-                                        <option value="fresco">Frutas y verduras frescas</option>
-                                        <option value="no_perecedero">Alimentos no perecederos</option>
-                                    </select>
-                                    <div class="form-group">
-                                        <label for="transport">Requiere transporte en frío: </label>
-                                        <label for="transport">Si</label>
-                                        <input type="checkbox" name="transport" id="transport" value="yes">
-                                        <label for="transport">No</label>
-                                        <input type="checkbox" name="transport" id="transport" value="no">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="address">Porciones:</label>
-                                        <input required class="form-control" type="number" name="portions" id="portions">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="expiration">Fecha de expiración:</label>
-                                        <input required class="form-control" type="date" name="expiration" id="expiration">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="description">Descripción detallada de los alimentos a donar:</label>
-                                        <textarea class="form-control" name="description" id="description" cols="30" rows="10" placeholder="Escriba aquí..."></textarea>
-                                    </div>
-                                    <input type="hidden" name="status" value='disponible'>
-                                    <input type="hidden" name="donator_id" value="{{user['id']}}">
-                                    <input type="hidden" name="receiver_id" value=0>
-                                    <button class="btn btn-outline-success me-2" type="submit">Realizar publicación</button>
-                                </form>
+            <div class="form" id='form'>
+                <form action="/register_donation" method="POST">
+                    <div class="container">
+                        <div class="form">
+                            <h1>Regístrese como donante de alimentos</h1>
+                            {% with messages = get_flashed_messages(category_filter=['donation']) %}
+                            {% if messages %}
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Errores a la hora de realizar la donación. Por favor inténtelo
+                                    nuevamente</strong>
+                                {% for message in messages %}
+                                <p>{{message}}</p>
+                                {% endfor %}
                             </div>
+                            {% endif %}
+                            {% endwith %}
+                            <div class="form-group">
+                                <label for="type">Tipo de donación:</label>
+                                <select class="form-select" name="type" aria-label="Default select example" multiple>
+                                    <option value="preparada" selected>Comida preparada</option>
+                                    <option value="fresco">Frutas y verduras frescas</option>
+                                    <option value="no_perecedero">Alimentos no perecederos</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="transport">Requiere transporte en frío: </label>
+                                <label for="transport">Si</label>
+                                <input type="checkbox" name="transport" id="transport" value="si">
+                                <label for="transport">No</label>
+                                <input type="checkbox" name="transport" id="transport" value="no">
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Porciones:</label>
+                                <input required class="form-control" type="number" name="portions" id="portions">
+                            </div>
+                            <div class="form-group">
+                                <label for="expiration">Fecha de expiración:</label>
+                                <input required class="form-control" type="date" name="expiration" id="expiration">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Descripción detallada de los alimentos a donar:</label>
+                                <textarea class="form-control" name="description" id="description" cols="30" rows="10"
+                                    placeholder="Escriba aquí..."></textarea>
+                            </div>
+                            <input type="hidden" name="status" value='disponible'>
+                            <input type="hidden" name="donator_id" value="{{user['id']}}">
+                            <input type="hidden" name="receiver_id" value=0>
+                            <button class="btn btn-outline-success me-2" type="submit">Realizar publicación</button>
                         </div>
-            
-            
-            
+                    </div>
                 </form>
-           </div>
-            
+            </div>
+
         </div>
-       
-        
+
+
     </body>
 </body>
+
 </html>

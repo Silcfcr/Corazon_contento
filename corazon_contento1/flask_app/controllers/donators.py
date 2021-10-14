@@ -1,7 +1,7 @@
 from flask_app.models.user import User
 from flask_app.models.donation import Donation
 from flask_app import app
-from flask import render_template, jsonify, request, redirect, session, flash
+from flask import render_template, request, redirect, session, flash
 
 from flask_bcrypt import Bcrypt        
 bcrypt = Bcrypt(app) 
@@ -68,8 +68,6 @@ def show_donation(id):
     print(donation)
     return render_template("show_donation.html", donation=donation)
 
-
-
 @app.route("/delete_donation/<int:id>")
 def delete_donation(id):
     data = {
@@ -90,7 +88,7 @@ def show_edit_donation(id):
         'id' : int(id)
     }
     donation = Donation.get_one_donation_by_id(data)
-    return render_template('show_donation.html', donation = donation)
+    return render_template('edit_donation.html', donation = donation)
 
 
 @app.route("/edit_donation/<int:id>", methods=['POST'])
@@ -101,12 +99,11 @@ def edit_donation(id):
         'portions' : request.form['portions'],
         'expiration': request.form['expiration'],
         'description' : request.form['description'],
-        'status' : request.form['status'],
-        'donator_id': session['user_id'],
-        'receiver_id' : request.form['receiver_id']
+        'id' : id
     }
-    Donation.edit_donation(data)
-    
-    return redirect(f'/show_donation/{id}')
+    donation = Donation.edit_donation(data)
+    print(donation)
+    print("i've edited")
+    return redirect(f'/list_of_donations')
 
 

@@ -34,10 +34,9 @@ class Donation:
         print(query)
         return connectToMySQL(cls.db).query_db(query,data)
     
-
     @classmethod
     def edit_donation(cls,data):
-        query  = "UPDATE donations SET status=%(status)s, receiver_id=%(receiver_id)s WHERE id= %(id)s;"
+        query  = "UPDATE donations SET type=%(type)s, transport=%(transport)s, portions=%(portions)s, expiration=%(expiration)s, description=%(description)s WHERE id= %(id)s;"
         return connectToMySQL(cls.db).query_db(query,data)
     
 
@@ -103,9 +102,3 @@ class Donation:
             flash("La donación debe ser mayor a 10 porciones", "donation")
             is_valid = False
         return is_valid
-
-  
-   
-        
-  
-   

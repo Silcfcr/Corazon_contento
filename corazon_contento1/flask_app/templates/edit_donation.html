@@ -40,7 +40,7 @@
     <body>
         <div class="body">
             <div class="form" id='form'>
-                <form action="/register_donation" method="POST">
+                <form action="/edit_donation/{{donation['id']}}" method="POST">
                     <div class="container">
                         <div class="form">
                             <h1>Regístrese como donante de alimentos</h1>
@@ -55,43 +55,37 @@
                             </div>
                             {% endif %}
                             {% endwith %}
-                            <form action="/register_user" method="POST">
+                            <div class="form-group">
                                 <label for="type">Tipo de donación:</label>
                                 <select class="form-select" name="type" aria-label="Default select example" multiple>
                                     <option value="preparada" selected>Comida preparada</option>
                                     <option value="fresco">Frutas y verduras frescas</option>
                                     <option value="no_perecedero">Alimentos no perecederos</option>
                                 </select>
-                                <div class="form-group">
-                                    <label for="transport">Requiere transporte en frío: </label>
-                                    <label for="transport">Si</label>
-                                    <input type="checkbox" name="transport" id="transport" value="yes">
-                                    <label for="transport">No</label>
-                                    <input type="checkbox" name="transport" id="transport" value="no">
-                                </div>
-                                <div class="form-group">
-                                    <label for="address">Porciones:</label>
-                                    <input required class="form-control" type="number" name="portions" id="portions">
-                                </div>
-                                <div class="form-group">
-                                    <label for="expiration">Fecha de expiración:</label>
-                                    <input required class="form-control" type="date" name="expiration" id="expiration">
-                                </div>
-                                <div class="form-group">
-                                    <label for="description">Descripción detallada de los alimentos a donar:</label>
-                                    <textarea class="form-control" name="description" id="description" cols="30"
-                                        rows="10" placeholder="Escriba aquí..."></textarea>
-                                </div>
-                                <input type="hidden" name="status" value='disponible'>
-                                <input type="hidden" name="donator_id" value="{{user['id']}}">
-                                <input type="hidden" name="receiver_id" value=0>
-                                <button class="btn btn-outline-success me-2" type="submit">Realizar publicación</button>
-                            </form>
+                            </div>
+                            <div class="form-group">
+                                <label for="transport">Requiere transporte en frío: </label>
+                                <label for="transport">Si</label>
+                                <input type="checkbox" name="transport" id="transport" value="si">
+                                <label for="transport">No</label>
+                                <input type="checkbox" name="transport" id="transport" value="no">
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Porciones:</label>
+                                <input required class="form-control" type="number" name="portions" id="portions" placeholder="{{donation['portions']}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="expiration">Fecha de expiración:</label>
+                                <input required class="form-control" type="date" name="expiration" id="expiration">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Descripción detallada de los alimentos a donar:</label>
+                                <textarea class="form-control" name="description" id="description" cols="30" rows="10"
+                                    placeholder="{{donation['description']}}"></textarea>
+                            </div>
+                            <button class="btn btn-outline-success me-2" type="submit">Realizar publicación</button>
                         </div>
                     </div>
-
-
-
                 </form>
             </div>
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,13 +13,15 @@
 
 
 </head>
+
 <body>
-   <!-- Nav_bar -->
+    <!-- Nav_bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">Corazón contento</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -30,15 +33,15 @@
                         <a class="nav-link" href="/list_of_receivers">Organizaciones beneficiadas</a>
                     </li>
                 </ul>
-                  {% if user != false: %}
-                    <form class="d-flex">
-                        <a href="/logout" class="btn btn-outline-success me-2" type="submit">Cerrar Sesión</a>
-                    </form>
+                {% if user != false: %}
+                <form class="d-flex">
+                    <a href="/logout" class="btn btn-outline-success me-2" type="submit">Cerrar Sesión</a>
+                </form>
                 {% else: %}
-                    <form class="d-flex">
-                        <a href="/register" class="btn btn-outline-success me-2" type="submit">Registrarse</a>
-                        <a href="/login" class="btn btn-outline-success me-2" type="submit">Iniciar Sesión</a>
-                    </form>
+                <form class="d-flex">
+                    <a href="/register" class="btn btn-outline-success me-2" type="submit">Registrarse</a>
+                    <a href="/login" class="btn btn-outline-success me-2" type="submit">Iniciar Sesión</a>
+                </form>
                 {% endif %}
             </div>
         </div>
@@ -46,39 +49,44 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="table-responsive col-8 justify-content-center">
+                {% if receivers != False %}
                 <table class="table">
                     <thead>
                         <tr>
-                            <td>Nombre</td>
-                            <td>Organización</td>
-                            <td>Población</td>
-                            <td>Dirección</td>
-                            <td>Contacto</td>
+                            <th >Nombre</th>
+                            <th>Organización</th>
+                            <th>Población</th>
+                            <th>Dirección</th>
+                            <th>Contacto</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% if receiver != False %}
-                            {% for receiver in receivers %}
-                            <tr>
-                                <td>{{receiver['name']}}</td>
-                                <td>{{receiver['type']}}</td>
-                                <td>{{receiver['population']}}</td>
-                                <td>{{receiver['state']}},{{receiver['city']}},{{receiver['address']}}</td>
-                                <td>{{receiver['contact_first_name']}}
-                                    {{receiver['contact_first_name']}},{{receiver['contact_email']}}
-                                </td>
-                            </tr>
-                            {% endfor%}
-                        {% endif %}
+                        {% for receiver in receivers %}
+                        <tr>
+                            <td>{{receiver['name']}}</td>
+                            <td>{{receiver['type']}}</td>
+                            <td>{{receiver['population']}}</td>
+                            <td>{{receiver['state']}},{{receiver['city']}},{{receiver['address']}}</td>
+                            <td>
+                                {{receiver['contact_first_name']}}{{receiver['contact_last_name']}},{{receiver['contact_email']}}
+                            </td>
+                        </tr>
+                        {% endfor%}
+
+
                     </tbody>
                 </table>
+                {% else: %}
+                <h1>Aún no existen beneficiarios registrados</h1>
+                {% endif %}
             </div>
         </div>
     </div>
-    
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
 </body>
+
 </html>

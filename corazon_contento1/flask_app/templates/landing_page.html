@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,13 +12,15 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 </head>
+
 <body>
     <!-- Nav_bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Corazón contento</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='/imgs/name.png') }}"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -36,27 +39,58 @@
             </div>
         </div>
     </nav>
-    <div class="body">
-        <div>
-            <h1>Que es Corazón contento?</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptate itaque facilis blanditiis
-                perspiciatis
-                sunt in modi aliquid ad, vero vitae quasi asperiores alias reprehenderit ullam nostrum. Nemo, possimus
-                praesentium?
-            </p>
-        </div>
-    
-        <div>
-            <h1>Que es la inseguridad alimentaria?</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptate itaque facilis blanditiis
-                perspiciatis
-                sunt in modi aliquid ad, vero vitae quasi asperiores alias reprehenderit ullam nostrum. Nemo, possimus
-                praesentium?
-            </p>
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="body col-10 justify-content-center">
+                <div class="box">
+                    <h1>Que es Corazón contento?</h1>
+                    <div class="inner-box">
+                        <p><b>Corazón Contento</b> es una iniciativa que pretender vincular a los actores a lo largo de
+                            la industria alimenticia ( restaurantes, supermercados, productores…) con organizaciones que
+                            velan por las personas con inseguridad alimentaria. Panza llena toma el exceso de alimentos
+                            frescos de diferentes fuentes de la industria y los entrega a familias con inseguridad
+                            alimentaria. El programa conecta a nuestros voluntarios con las agencias receptoras y los
+                            donantes de alimentos. Su sistema de programación simplificado ofrece a los usuarios la
+                            opción de recoger, dejar o recibir alimentos frescos a su conveniencia, aliviando la rigidez
+                            de los horarios normales de rescate de alimentos.
+                        </p>
+                        <img class="image" src="{{ url_for('static', filename='/imgs/image1.jpg') }}">
+                    </div>
+
+                </div>
+
+                <div class="box">
+                    <h1>Que es la inseguridad alimentaria?</h1>
+                    <p>La inseguridad alimentaria  se define como "el estado de carencia de acceso confiable a una
+                        cantidad suficiente de alimentos nutritivos y asequibles".
+                    </p>
+                </div>
+
+                <div class="box">
+                    <h1>Quienes somos?</h1>
+                    <div class="inner-box">
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo maxime laboriosam, deleniti
+                            iure nam delectus quia deserunt veritatis, ut voluptas in vero? Pariatur ex ut perspiciatis
+                            sapiente error accusamus recusandae.
+                            orem ipsum dolor, sit amet consectetur adipisicing elit. Illo maxime laboriosam, deleniti
+                            iure nam delectus quia deserunt veritatis, ut voluptas in vero? Pariatur ex ut perspiciatis
+                            sapiente error accusamus recusandae.
+                            orem ipsum dolor, sit amet consectetur adipisicing elit. Illo maxime laboriosam, deleniti
+                            iure nam delectus quia deserunt veritatis, ut voluptas in vero? Pariatur ex ut perspiciatis
+                            sapiente error accusamus recusandae.</p>
+                        <video id='vid' control muted src="{{ url_for('static', filename='/imgs/video.mp4') }}"
+                            preserveAspectRatio="xMidYMid slice" focusable="false" style="text-anchor:middle;"
+                            width="50%" height="50%" id="myVid" onmouseout="pause(this)"
+                            onmouseover="play(this)"></video>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='/js/site.js') }}"></script>          
 </body>
 </html>

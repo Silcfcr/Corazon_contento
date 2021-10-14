@@ -6,6 +6,7 @@ from flask import render_template,request, redirect, session, flash
 @app.route("/list_of_receivers")
 def list_of_receivers():
     receivers =User.get_all_receivers()
+    print(receivers)
     if "user_id" in session:
         data = {
             "id" : session['user_id']

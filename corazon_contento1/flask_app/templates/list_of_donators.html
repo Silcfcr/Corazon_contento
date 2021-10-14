@@ -46,14 +46,14 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="table-responsive col-8 justify-content-center">
-                {% if donator != False: %}
+                {% if donators != False: %}
                 <table class="table">
                     <thead>
                         <tr>
-                            <td>Nombre</td>
-                            <td>Organización</td>
-                            <td>Dirección</td>
-                            <td>Contacto</td>
+                            <th >Nombre</th>
+                            <th>Organización</th>
+                            <th>Dirección</th>
+                            <th>Contacto</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,12 +62,15 @@
                             <td>{{donator['name']}}</td>
                             <td>{{donator['type']}}</td>
                             <td>{{donator['state']}},{{donator['city']}},{{donator['address']}}</td>
-                            <td>{{donator['contact_first_name']}} {{donator['contact_first_name']}}, {{donator['contact_email']}}</td>
+                            <td>{{donator['contact_first_name']}} {{donator['contact_last_name']}}, {{donator['contact_email']}}</td>
                         </tr>
                         {% endfor%}
                     </tbody>
                 </table>
+                {% else: %}
+                <h1>Aún no existen donadores registrados</h1>
                 {% endif %}
+
             </div>  
         </div>
     </div>
